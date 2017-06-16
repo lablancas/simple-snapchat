@@ -307,7 +307,7 @@ class LoginRegisterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor(r: 255, g: 254, b: 0)
+        view.backgroundColor = UIColor.white
         
         view.addSubview(inputContainerView)
         view.addSubview(loginRegisterButton)
