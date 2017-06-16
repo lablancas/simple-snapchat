@@ -61,9 +61,8 @@ class LoginRegisterController: UIViewController {
     
     lazy var forgetPasswordButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(r: 255, g: 96, b: 136)
         button.setTitle("", for: UIControlState())
-        button.setTitleColor(UIColor.white, for: UIControlState())
+        button.setTitleColor(UIColor.black, for: UIControlState())
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.translatesAutoresizingMaskIntoConstraints = false
         
