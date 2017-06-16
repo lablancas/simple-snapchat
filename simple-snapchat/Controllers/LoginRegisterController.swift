@@ -310,7 +310,7 @@ class LoginRegisterController: UIViewController {
         
         view.addSubview(inputContainerView)
         view.addSubview(loginRegisterButton)
-        view.addSubview(profileImageView)
+        //view.addSubview(profileImageView)
         view.addSubview(loginRegisterSegmentedControl)
         view.addSubview(spinnerView)
         view.bringSubview(toFront: spinnerView)
@@ -319,7 +319,7 @@ class LoginRegisterController: UIViewController {
         setupSpinnerView()
         setupInputContainerView()
         setupLoginRegisterButton()
-        setupProfileImageView()
+        //setupProfileImageView()
         setupLoginRegisterSegmentedControl()
         
         setupForgetPasswordButton()
