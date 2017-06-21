@@ -52,6 +52,7 @@ class SendToController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     lazy var sendButtonView: UIImageView = {
         let sb = UIImageView()
+        sb.isHidden = true
         sb.image = UIImage(named: "send-button")?.withRenderingMode(.alwaysTemplate)
         sb.tintColor = UIColor.white
         sb.isUserInteractionEnabled = true
@@ -287,6 +288,8 @@ class SendToController: UIViewController, UITableViewDelegate, UITableViewDataSo
             self.location = location
             print(location)
         }
+        
+        sendButtonView.isHidden = false
     }
     
     func locationManager(_ manager: CLLocationManager,
