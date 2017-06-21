@@ -90,10 +90,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         _ = circleQuery?.observe(GFEventType.keyEntered, with: { (key, location) in
             if let key = key, let location = location {
                 let anno = MKPointAnnotation()
+                anno.title = key
                 anno.coordinate = location.coordinate
                 
                 //Add annotation to our mapView.
                 self.mapView.addAnnotation(anno)
+            }
+        })
+        
+        _ = circleQuery?.observe(GFEventType.keyExited, with: { (key, location) in
+            print("key exited \(key)")
+            if let key = key {
+                for anno in self.mapView.annotations
+                {
+                    if let title = anno.title, key == title {
+                        self.mapView.removeAnnotation(anno)
+                    }
+                }
             }
         })
     }
