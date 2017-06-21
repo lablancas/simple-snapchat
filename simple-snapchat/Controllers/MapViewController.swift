@@ -100,7 +100,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     //  This function will be called when mapView is added a annotation.
     //  used to set custom view for annotation icon.
-    func mapView(_ mapView:MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView {
+    func mapView(_ mapView:MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+        }
         let reusableAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: "post-annotation")
         if reusableAnnotation != nil {
             return reusableAnnotation!
