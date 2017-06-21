@@ -64,6 +64,21 @@
 		79E7CFF81D9CE95A00F081E2 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7CFF71D9CE95A00F081E2 /* ChatCell.swift */; };
 		79E7CFFA1D9E04AA00F081E2 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7CFF91D9E04AA00F081E2 /* MessageCell.swift */; };
 		79E7CFFD1D9EC01600F081E2 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E7CFFC1D9EC01600F081E2 /* Extensions.swift */; };
+		A089EE7E1EFAEBD200AF5934 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = A089EE361EFAEBD200AF5934 /* .gitignore */; };
+		A089EE7F1EFAEBD200AF5934 /* build.sh in Resources */ = {isa = PBXBuildFile; fileRef = A089EE371EFAEBD200AF5934 /* build.sh */; };
+		A089EE801EFAEBD200AF5934 /* changelog.txt in Resources */ = {isa = PBXBuildFile; fileRef = A089EE381EFAEBD200AF5934 /* changelog.txt */; };
+		A089EE811EFAEBD200AF5934 /* create-docs.sh in Resources */ = {isa = PBXBuildFile; fileRef = A089EE391EFAEBD200AF5934 /* create-docs.sh */; };
+		A089EE8E1EFAEBD200AF5934 /* firebase.json in Resources */ = {isa = PBXBuildFile; fileRef = A089EE561EFAEBD200AF5934 /* firebase.json */; };
+		A089EE8F1EFAEBD200AF5934 /* GeoFire.m in Sources */ = {isa = PBXBuildFile; fileRef = A089EE601EFAEBD200AF5934 /* GeoFire.m */; };
+		A089EE901EFAEBD200AF5934 /* GFBase32Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = A089EE621EFAEBD200AF5934 /* GFBase32Utils.m */; };
+		A089EE911EFAEBD200AF5934 /* GFGeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = A089EE641EFAEBD200AF5934 /* GFGeoHash.m */; };
+		A089EE921EFAEBD200AF5934 /* GFGeoHashQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = A089EE661EFAEBD200AF5934 /* GFGeoHashQuery.m */; };
+		A089EE931EFAEBD200AF5934 /* GFQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = A089EE681EFAEBD200AF5934 /* GFQuery.m */; };
+		A089EE941EFAEBD200AF5934 /* GeoFire.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A089EE691EFAEBD200AF5934 /* GeoFire.podspec */; };
+		A089EE9D1EFAEBD200AF5934 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A089EE791EFAEBD200AF5934 /* LICENSE */; };
+		A089EE9E1EFAEBD200AF5934 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A089EE7A1EFAEBD200AF5934 /* Podfile */; };
+		A089EE9F1EFAEBD200AF5934 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = A089EE7B1EFAEBD200AF5934 /* README.md */; };
+		A089EEA01EFAEBD200AF5934 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = A089EE7D1EFAEBD200AF5934 /* index.html */; };
 		BF9E77E51E51204E00B3A147 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BF9E77E41E51204E00B3A147 /* GoogleService-Info.plist */; };
 		D4E231381DA470F5008B7FC4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4E231371DA470F5008B7FC4 /* CoreData.framework */; };
 		D4E2313E1DA4722D008B7FC4 /* photoModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D4E2313C1DA4722D008B7FC4 /* photoModel.xcdatamodeld */; };
@@ -84,6 +99,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 00DD9D131D98F5D3006489BE;
 			remoteInfo = "simple-snapchat";
+		};
+		A089EEA41EFAEBD200AF5934 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A089EE6A1EFAEBD200AF5934 /* GeoFire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FBA358BC19655FED00A86282;
+			remoteInfo = GeoFire;
+		};
+		A089EEA61EFAEBD200AF5934 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A089EE6A1EFAEBD200AF5934 /* GeoFire.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FBA358CC19655FED00A86282;
+			remoteInfo = GeoFireTests;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -152,6 +181,33 @@
 		79E7CFF71D9CE95A00F081E2 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatCell.swift; path = View/ChatCell.swift; sourceTree = "<group>"; };
 		79E7CFF91D9E04AA00F081E2 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageCell.swift; path = View/MessageCell.swift; sourceTree = "<group>"; };
 		79E7CFFC1D9EC01600F081E2 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A089EE341EFAEB4800AF5934 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		A089EE361EFAEBD200AF5934 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		A089EE371EFAEBD200AF5934 /* build.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		A089EE381EFAEBD200AF5934 /* changelog.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = changelog.txt; sourceTree = "<group>"; };
+		A089EE391EFAEBD200AF5934 /* create-docs.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = "create-docs.sh"; sourceTree = "<group>"; };
+		A089EE561EFAEBD200AF5934 /* firebase.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = firebase.json; sourceTree = "<group>"; };
+		A089EE591EFAEBD200AF5934 /* GeoFire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoFire.h; sourceTree = "<group>"; };
+		A089EE5A1EFAEBD200AF5934 /* GFCircleQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFCircleQuery.h; sourceTree = "<group>"; };
+		A089EE5B1EFAEBD200AF5934 /* GFQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFQuery.h; sourceTree = "<group>"; };
+		A089EE5C1EFAEBD200AF5934 /* GFRegionQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFRegionQuery.h; sourceTree = "<group>"; };
+		A089EE5D1EFAEBD200AF5934 /* GeoFire-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire-Prefix.pch"; sourceTree = "<group>"; };
+		A089EE5F1EFAEBD200AF5934 /* GeoFire+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GeoFire+Private.h"; sourceTree = "<group>"; };
+		A089EE601EFAEBD200AF5934 /* GeoFire.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoFire.m; sourceTree = "<group>"; };
+		A089EE611EFAEBD200AF5934 /* GFBase32Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFBase32Utils.h; sourceTree = "<group>"; };
+		A089EE621EFAEBD200AF5934 /* GFBase32Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFBase32Utils.m; sourceTree = "<group>"; };
+		A089EE631EFAEBD200AF5934 /* GFGeoHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHash.h; sourceTree = "<group>"; };
+		A089EE641EFAEBD200AF5934 /* GFGeoHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHash.m; sourceTree = "<group>"; };
+		A089EE651EFAEBD200AF5934 /* GFGeoHashQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GFGeoHashQuery.h; sourceTree = "<group>"; };
+		A089EE661EFAEBD200AF5934 /* GFGeoHashQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFGeoHashQuery.m; sourceTree = "<group>"; };
+		A089EE671EFAEBD200AF5934 /* GFQuery+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GFQuery+Private.h"; sourceTree = "<group>"; };
+		A089EE681EFAEBD200AF5934 /* GFQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GFQuery.m; sourceTree = "<group>"; };
+		A089EE691EFAEBD200AF5934 /* GeoFire.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GeoFire.podspec; sourceTree = "<group>"; };
+		A089EE6A1EFAEBD200AF5934 /* GeoFire.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = GeoFire.xcodeproj; sourceTree = "<group>"; };
+		A089EE791EFAEBD200AF5934 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A089EE7A1EFAEBD200AF5934 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		A089EE7B1EFAEBD200AF5934 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A089EE7D1EFAEBD200AF5934 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		AEAE246D0AA3AD2FEEC45FB0 /* Pods_simple_snapchat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_simple_snapchat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF9E77E41E51204E00B3A147 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D4E231371DA470F5008B7FC4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -288,6 +344,7 @@
 		00DD9D0B1D98F5D3006489BE = {
 			isa = PBXGroup;
 			children = (
+				A089EE351EFAEBD200AF5934 /* geofire-objc */,
 				00DD9D161D98F5D3006489BE /* simple-snapchat */,
 				0C2A94D01E506FED0099A8F5 /* simple-snapchat-tests */,
 				0C2A94DE1E50700A0099A8F5 /* simple-snapchat-UITests */,
@@ -328,6 +385,7 @@
 				00DD9D201D98F5D3006489BE /* LaunchScreen.storyboard */,
 				BF9E77E41E51204E00B3A147 /* GoogleService-Info.plist */,
 				00DD9D231D98F5D3006489BE /* Info.plist */,
+				A089EE341EFAEB4800AF5934 /* Bridging-Header.h */,
 			);
 			path = "simple-snapchat";
 			sourceTree = "<group>";
@@ -401,6 +459,80 @@
 				79E7CFFC1D9EC01600F081E2 /* Extensions.swift */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		A089EE351EFAEBD200AF5934 /* geofire-objc */ = {
+			isa = PBXGroup;
+			children = (
+				A089EE361EFAEBD200AF5934 /* .gitignore */,
+				A089EE371EFAEBD200AF5934 /* build.sh */,
+				A089EE381EFAEBD200AF5934 /* changelog.txt */,
+				A089EE391EFAEBD200AF5934 /* create-docs.sh */,
+				A089EE561EFAEBD200AF5934 /* firebase.json */,
+				A089EE571EFAEBD200AF5934 /* GeoFire */,
+				A089EE691EFAEBD200AF5934 /* GeoFire.podspec */,
+				A089EE6A1EFAEBD200AF5934 /* GeoFire.xcodeproj */,
+				A089EE791EFAEBD200AF5934 /* LICENSE */,
+				A089EE7A1EFAEBD200AF5934 /* Podfile */,
+				A089EE7B1EFAEBD200AF5934 /* README.md */,
+				A089EE7C1EFAEBD200AF5934 /* site */,
+			);
+			path = "geofire-objc";
+			sourceTree = "<group>";
+		};
+		A089EE571EFAEBD200AF5934 /* GeoFire */ = {
+			isa = PBXGroup;
+			children = (
+				A089EE581EFAEBD200AF5934 /* API */,
+				A089EE5D1EFAEBD200AF5934 /* GeoFire-Prefix.pch */,
+				A089EE5E1EFAEBD200AF5934 /* Implementation */,
+			);
+			path = GeoFire;
+			sourceTree = "<group>";
+		};
+		A089EE581EFAEBD200AF5934 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				A089EE591EFAEBD200AF5934 /* GeoFire.h */,
+				A089EE5A1EFAEBD200AF5934 /* GFCircleQuery.h */,
+				A089EE5B1EFAEBD200AF5934 /* GFQuery.h */,
+				A089EE5C1EFAEBD200AF5934 /* GFRegionQuery.h */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		A089EE5E1EFAEBD200AF5934 /* Implementation */ = {
+			isa = PBXGroup;
+			children = (
+				A089EE5F1EFAEBD200AF5934 /* GeoFire+Private.h */,
+				A089EE601EFAEBD200AF5934 /* GeoFire.m */,
+				A089EE611EFAEBD200AF5934 /* GFBase32Utils.h */,
+				A089EE621EFAEBD200AF5934 /* GFBase32Utils.m */,
+				A089EE631EFAEBD200AF5934 /* GFGeoHash.h */,
+				A089EE641EFAEBD200AF5934 /* GFGeoHash.m */,
+				A089EE651EFAEBD200AF5934 /* GFGeoHashQuery.h */,
+				A089EE661EFAEBD200AF5934 /* GFGeoHashQuery.m */,
+				A089EE671EFAEBD200AF5934 /* GFQuery+Private.h */,
+				A089EE681EFAEBD200AF5934 /* GFQuery.m */,
+			);
+			path = Implementation;
+			sourceTree = "<group>";
+		};
+		A089EE6B1EFAEBD200AF5934 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A089EEA51EFAEBD200AF5934 /* libGeoFire.a */,
+				A089EEA71EFAEBD200AF5934 /* GeoFireTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A089EE7C1EFAEBD200AF5934 /* site */ = {
+			isa = PBXGroup;
+			children = (
+				A089EE7D1EFAEBD200AF5934 /* index.html */,
+			);
+			path = site;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -510,6 +642,12 @@
 			mainGroup = 00DD9D0B1D98F5D3006489BE;
 			productRefGroup = 00DD9D151D98F5D3006489BE /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = A089EE6B1EFAEBD200AF5934 /* Products */;
+					ProjectRef = A089EE6A1EFAEBD200AF5934 /* GeoFire.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				00DD9D131D98F5D3006489BE /* simple-snapchat */,
@@ -519,15 +657,41 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		A089EEA51EFAEBD200AF5934 /* libGeoFire.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGeoFire.a;
+			remoteRef = A089EEA41EFAEBD200AF5934 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		A089EEA71EFAEBD200AF5934 /* GeoFireTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GeoFireTests.xctest;
+			remoteRef = A089EEA61EFAEBD200AF5934 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
 		00DD9D121D98F5D3006489BE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A089EE7E1EFAEBD200AF5934 /* .gitignore in Resources */,
+				A089EEA01EFAEBD200AF5934 /* index.html in Resources */,
+				A089EE811EFAEBD200AF5934 /* create-docs.sh in Resources */,
 				00DD9D221D98F5D3006489BE /* LaunchScreen.storyboard in Resources */,
+				A089EE8E1EFAEBD200AF5934 /* firebase.json in Resources */,
 				BF9E77E51E51204E00B3A147 /* GoogleService-Info.plist in Resources */,
+				A089EE801EFAEBD200AF5934 /* changelog.txt in Resources */,
+				A089EE9E1EFAEBD200AF5934 /* Podfile in Resources */,
+				A089EE7F1EFAEBD200AF5934 /* build.sh in Resources */,
 				00DD9D1F1D98F5D3006489BE /* Assets.xcassets in Resources */,
+				A089EE9D1EFAEBD200AF5934 /* LICENSE in Resources */,
 				00DD9D1D1D98F5D3006489BE /* Main.storyboard in Resources */,
+				A089EE941EFAEBD200AF5934 /* GeoFire.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,7 +769,10 @@
 				002A34F61DCDEC9000BC0A29 /* Photo+CoreDataProperties.swift in Sources */,
 				00E2E8D91DADCA380080CF24 /* SendingPhoto.swift in Sources */,
 				000D50CD1DB37C8E003131DB /* PublicStory.swift in Sources */,
+				A089EE901EFAEBD200AF5934 /* GFBase32Utils.m in Sources */,
+				A089EE8F1EFAEBD200AF5934 /* GeoFire.m in Sources */,
 				004349091D99030100D3DE54 /* TopViewController.swift in Sources */,
+				A089EE921EFAEBD200AF5934 /* GFGeoHashQuery.m in Sources */,
 				002A350A1DCDEECD00BC0A29 /* PublicAgencyCell.swift in Sources */,
 				798136321D9928670074ED25 /* ChatListTableViewController.swift in Sources */,
 				0061700F1D9FCEC2002354B3 /* Story.swift in Sources */,
@@ -617,6 +784,7 @@
 				798136361D9977010074ED25 /* ChatLogController.swift in Sources */,
 				002A350E1DCDEF0600BC0A29 /* SnapsCell.swift in Sources */,
 				002A35081DCDEEAE00BC0A29 /* PhotoCell.swift in Sources */,
+				A089EE9F1EFAEBD200AF5934 /* README.md in Sources */,
 				00C4571D1DA5094E004075FD /* MemoriesController.swift in Sources */,
 				798136481D9BCFD50074ED25 /* User.swift in Sources */,
 				000D50CF1DB39948003131DB /* PublicStoryCell.swift in Sources */,
@@ -635,6 +803,7 @@
 				002A35041DCDEE6700BC0A29 /* CamerollRollCell.swift in Sources */,
 				002A34FE1DCDED4400BC0A29 /* MyFriendsTableViewController.swift in Sources */,
 				002A35021DCDED9300BC0A29 /* StickerCell.swift in Sources */,
+				A089EE911EFAEBD200AF5934 /* GFGeoHash.m in Sources */,
 				798136471D9BCFD50074ED25 /* Message.swift in Sources */,
 				002A34FC1DCDECFC00BC0A29 /* AddUsernameTableViewController.swift in Sources */,
 				D4E2313E1DA4722D008B7FC4 /* photoModel.xcdatamodeld in Sources */,
@@ -642,6 +811,7 @@
 				79484F901DB0E5AD00505B0F /* ImageWithTimerViewController.swift in Sources */,
 				791F308D1DAA722400001D90 /* QRReaderControllerViewController.swift in Sources */,
 				791F30911DAA8CFB00001D90 /* MapViewController.swift in Sources */,
+				A089EE931EFAEBD200AF5934 /* GFQuery.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,6 +974,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.whereislit.Lit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "simple-snapchat/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -825,6 +996,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.whereislit.Lit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "simple-snapchat/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
