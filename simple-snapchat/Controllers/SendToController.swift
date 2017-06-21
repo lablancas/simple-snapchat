@@ -8,10 +8,14 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
-
-class SendToController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SendToController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     let cellId = "cellId"
+    
+    var locationManager: CLLocationManager!
+    var location: CLLocation?
+    var geoFire: GeoFire!
     
     var currentUid = String()
     var currentUsername = String()
@@ -29,6 +33,14 @@ class SendToController: UIViewController, UITableViewDelegate, UITableViewDataSo
         setupTableView()
         fetchFriends()
         
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        
+        let geofireRef = FIRDatabase.database().reference().child("locations")
+        geoFire = GeoFire(firebaseRef: geofireRef)
     }
     
     let bottomSelectView: UIView = {
@@ -163,6 +175,9 @@ class SendToController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 print(error)
                 return
             }
+            if self.location != nil {
+                self.geoFire.setLocation(self.location, forKey: ref.key)
+            }
         })
     }
     
@@ -264,6 +279,19 @@ class SendToController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didUpdateLocations locations: [CLLocation]){
+        if let location = locations.first {
+            self.location = location
+            print(location)
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager,
+                         didFailWithError error: Error){
+        print(error.localizedDescription)
     }
 }
 
