@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -609,6 +609,55 @@
             </objects>
             <point key="canvasLocation" x="2510" y="-447"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="aFh-Wb-FiJ">
+            <objects>
+                <viewController title="Map View Controller" id="0Ap-93-Iol" customClass="MapViewController" customModule="simple_snapchat" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EY0-Hd-NhN"/>
+                        <viewControllerLayoutGuide type="bottom" id="bRK-hZ-4aU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xf9-tE-wKL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="oJA-gl-AA1">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="oJA-gl-AA1" firstAttribute="leading" secondItem="xf9-tE-wKL" secondAttribute="leading" id="cQl-5f-EXM"/>
+                            <constraint firstItem="oJA-gl-AA1" firstAttribute="top" secondItem="EY0-Hd-NhN" secondAttribute="bottom" id="egm-ms-ieU"/>
+                            <constraint firstAttribute="trailing" secondItem="oJA-gl-AA1" secondAttribute="trailing" id="i57-cD-RL7"/>
+                            <constraint firstItem="bRK-hZ-4aU" firstAttribute="top" secondItem="oJA-gl-AA1" secondAttribute="bottom" id="ogw-zC-aKC"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="i4v-jT-NZo"/>
+                    <connections>
+                        <outlet property="mapView" destination="oJA-gl-AA1" id="sJ8-Ue-G36"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GyK-U3-cdm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2510" y="348"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Res-Ew-byZ">
+            <objects>
+                <navigationController storyboardIdentifier="right" id="ByE-y9-jJH" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qTP-wE-C9u">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="0Ap-93-Iol" kind="relationship" relationship="rootViewController" id="urt-Kd-gRi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RpQ-21-DxJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1682" y="348"/>
+        </scene>
         <!--Preview-->
         <scene sceneID="SOP-Sx-9Wz">
             <objects>
@@ -830,7 +879,7 @@
         <!--Navigation Controller-->
         <scene sceneID="kxB-C8-7gA">
             <objects>
-                <navigationController storyboardIdentifier="right" automaticallyAdjustsScrollViewInsets="NO" id="pel-dI-FCt" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pel-dI-FCt" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="mWd-hY-MU6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
