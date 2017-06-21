@@ -1,201 +1,125 @@
-//
-//  MapViewController.swift
-//  simple-snapchat
-//
-//  Created by Helen on 10/10/2016.
-//  Copyright © 2016 University of Melbourne. All rights reserved.
-//
-
-import UIKit
-import CoreLocation
+import Foundation
 import MapKit
 import Firebase
 
-
-class MapViewController: UIViewController, CLLocationManagerDelegate , MKMapViewDelegate{
+class MapViewController: UIViewController, MKMapViewDelegate {
     
-    let locationManager = CLLocationManager()
-    var location = CLLocation()
-    var mapView = MKMapView()
+    @IBOutlet weak var mapView: MKMapView!
     var fromID : String?
     var toID : String?
     var partnerLocation = kCLLocationCoordinate2DInvalid
-    
-    lazy var myBtn : UIButton = {
-        let btn = UIButton()
-        btn.setTitle("Share my location", for: .normal)
-        btn.backgroundColor = UIColor.white
-        btn.alpha = 0.7
-        btn.layer.cornerRadius = CGFloat(10.0)
-        btn.setTitleColor(UIColor.darkGray, for: UIControlState())
-        btn.translatesAutoresizingMaskIntoConstraints = false
-        btn.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        return btn
-    }()
-    
 
-       override func viewDidLoad() {
+    //  3.Create CLLocationManager in order to reach a Location service.
+    let locationManager = CLLocationManager()
+    
+    var mapHasCenteredOnce = false
+    var geoFire: GeoFire!
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(closeMap))
-        view = mapView
         
-        // Add get my location button
-        mapView.addSubview(myBtn)
-        self.myBtn.rightAnchor.constraint(equalTo: mapView.rightAnchor,constant: -12).isActive = true
-        self.myBtn.bottomAnchor.constraint(equalTo: mapView.bottomAnchor, constant: -8).isActive = true
-        self.myBtn.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        self.myBtn.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        view = mapView
+        mapView.delegate = self
         
+        //  4.Set user tracking mode 
+        mapView.userTrackingMode = MKUserTrackingMode.follow
+      
+        let geofireRef = FIRDatabase.database().reference().child("locations")
+        geoFire = GeoFire(firebaseRef: geofireRef)
         
-        locationManager.requestWhenInUseAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Camera", style: .plain, target: self, action: #selector(cameraView))
+    }
+    
+    override func viewDidAppear(_ animated: Bool){
+        locationAuthStatus()
+    }
+    
+    //  5.Create function Checking authorization status of using a location.
+    func locationAuthStatus(){
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            
+            /*  6.Allow map view to use Core Location to find the user's location 
+                and add an annotation of type MKUserLocation to the map. */
             mapView.showsUserLocation = true
-
+        } else {
+            //  6.1.If status isn't authorizedWhenInUse, then ask manager for the author
+            locationManager.requestWhenInUseAuthorization()
         }
-        
-        if CLLocationCoordinate2DIsValid(partnerLocation) {
-            print("Partner location is :",partnerLocation)
-            //Add pin
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate   = partnerLocation
-            annotation.title        = "Chat partner"
-            
-            mapView.addAnnotation(annotation)
-            
-            // Change Button
-            myBtn.setTitle("Calculate Distance", for: .normal)
-
+    }
+    
+    /*  6.2 if authorized status has changed, CLLocation call its 
+        delegate after that we will have to set "true" to showsUserLocation */
+    func locationManager(_ manager:CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            mapView.showsUserLocation = true 
         }
-        
+    }
+    
+    //  Our function used to set the screen into center of present location
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,2000,2000)
        
-    }
-
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Errors: ", error.localizedDescription)
+        // Use setRegion Method so as to set position and zoom level of our screen.
+        mapView.setRegion(coordinateRegion, animated: true)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        location = locations.last!
-        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta:0.001, longitudeDelta: 0.001))
-        self.mapView.setRegion(region, animated: true)
-        self.locationManager.stopUpdatingLocation()
-    }
-
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func closeMap(){
-        self.dismiss(animated: true, completion: nil)
-    }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func buttonTapped(){
-
-        if CLLocationCoordinate2DIsValid(partnerLocation){
-            calculateDistance(source: location.coordinate, destination: partnerLocation)
-        }else{
-            shareLocation()
-        }
-    }
-    
-    func shareLocation(){
-        let ref = FIRDatabase.database().reference().child("messages")
-        let childRef = ref.childByAutoId()
-        
-        let lat : String = location.coordinate.latitude.description
-        let lng : String = location.coordinate.longitude.description
-        
-        
-        let timestamp = Int(NSDate().timeIntervalSince1970)
-        let values = ["latitude": lat , "longitude": lng,"toID": self.toID!, "fromID": self.fromID!, "timestamp": timestamp] as [String : Any]
-        
-        childRef.updateChildValues(values) { (error, ref) in
-            if error != nil{
-                print(error)
-                return
-            }
-            //Update user-messages for both sender and receiver
-            let senderMsgRef = FIRDatabase.database().reference().child("user-messages").child(self.fromID!).child(self.toID!)
-            senderMsgRef.updateChildValues([childRef.key : 1])
-            let receiverMsgRef = FIRDatabase.database().reference().child("user-messages").child(self.toID!).child(self.fromID!)
-            receiverMsgRef.updateChildValues([childRef.key : 1])
-        }
-        closeMap()
-    }
-    
-    
-    func calculateDistance(source: CLLocationCoordinate2D, destination: CLLocationCoordinate2D){
-        // Show Pin
-        let annotation = MKPointAnnotation()
-        annotation.coordinate   = source
-        annotation.title        = "My location"
-        mapView.addAnnotation(annotation)
-
-
-        let request = MKDirectionsRequest()
-        request.source = MKMapItem(placemark: MKPlacemark(coordinate: source, addressDictionary: nil))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination, addressDictionary: nil))
-        request.requestsAlternateRoutes = true
-        request.transportType = .automobile
-        
-        let directions = MKDirections(request: request)
-        
-        directions.calculate { [unowned self] response, error in
-            var shortestDistance : CLLocationDistance
-            guard let unwrappedResponse = response else { return }
-            shortestDistance = (unwrappedResponse.routes.first?.distance)!
-            for route in unwrappedResponse.routes{
-                    if route.distance < shortestDistance {
-                        shortestDistance = route.distance
-                    }
-                
-                self.mapView.add(route.polyline, level: MKOverlayLevel.aboveLabels)
-                self.mapView.setVisibleMapRect(route.polyline.boundingMapRect , animated: true)
-                
-            }
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        if let loc = userLocation.location {
             
-            let txt = "The distance between you two is \(shortestDistance) meters!"
-            self.displayAlert(title: "Distance", message: txt)
-
+            // 7.Check if this is the first opening map, set screen into the present location.
+            if !mapHasCenteredOnce {
+                centerMapOnLocation(location: loc)
+                mapHasCenteredOnce = true
+            }
         }
+    }
+    
+    /*  Everytime, when user pan their map, This Function will be called. 
+        Then we're going to update observer for around existing annotation based on present location. */
+    func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {     
+        let loc = CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)
+        showPostsOnMap(location: loc)
+    }
+    
+    //Create or Update Annotation observer and then Add the Annotation into our mapView if it exist.
+    func showPostsOnMap(location: CLLocation) {    
+        //  Create observer in order to find annotation around a location (2.5 km)
+        let circleQuery = geoFire!.query(at: location, withRadius: 2.5)
+        
+        /*  observer will be called when it be initialized by (.observe method)
+            or location data is added into firebase hosting */
+        _ = circleQuery?.observe(GFEventType.keyEntered, with: { (key, location) in
+            if let key = key, let location = location {
+                let anno = MKPointAnnotation()
+                anno.coordinate = location.coordinate
+                
+                //Add annotation to our mapView.
+                self.mapView.addAnnotation(anno)
+            }
+        })
+    }
+    
+    //  This function will be called when mapView is added a annotation.
+    //  used to set custom view for annotation icon.
+    func mapView(_ mapView:MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView {
+        let reusableAnnotation = mapView.dequeueReusableAnnotationView(withIdentifier: "post-annotation")
+        if reusableAnnotation != nil {
+            return reusableAnnotation!
+        }
+        return MKPinAnnotationView(annotation: annotation, reuseIdentifier: "post-annotation")
+    }
+    
+    // Callout accessory control is tapped !!!!!
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("calloutAccessoryControlTapped \(control)")
         
     }
     
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        let renderer = MKPolylineRenderer(polyline: overlay as! MKPolyline)
-
-        renderer.strokeColor = UIColor.red
-        renderer.lineWidth = 5
-        return renderer
+    func cameraView(){
+        let scrollView = self.navigationController?.view?.superview as? UIScrollView
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            scrollView!.contentOffset.x = self.view.frame.width
+        }, completion: nil)
+        
     }
     
-    func displayAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(defaultAction)
-        self.present(alert, animated: true, completion: nil)
-    }
-
 }
-
-
